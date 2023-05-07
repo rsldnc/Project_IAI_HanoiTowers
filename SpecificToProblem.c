@@ -35,28 +35,18 @@ State* Create_State()
 //______________________________________________________________________________
 void Print_State(const State *const state)
 {
-    switch(state->city){
-         case  Arad:      printf("Arad"); break;
-         case  Bucharest: printf("Bucharest"); break;
-         case  Craiova:   printf("Craiova"); break;
-         case  Drobeta:   printf("Drobeta"); break;
-         case  Eforie:    printf("Eforie"); break;
-         case  Fagaras:   printf("Fagaras"); break;
-         case  Giurgiu:   printf("Giurgiu"); break;
-         case  Hirsova:   printf("Hirsova"); break;
-         case  Iasi:      printf("Iasi"); break;
-         case  Lugoj:     printf("Lugoj"); break;
-         case  Mehadia:   printf("Mehadia"); break;
-         case  Neamt:     printf("Neamt"); break;
-         case  Oradea:    printf("Oradea"); break;
-         case  Pitesti:   printf("Pitesti"); break;
-         case  Rimnicu_Vilcea: printf("Rimnicu Vilcea"); break;
-         case  Sibiu:     printf("Sibiu"); break;
-         case  Timisoara: printf("Timisoara"); break;
-         case  Urziceni:  printf("Urziceni"); break;
-         case  Vaslui:    printf("Vaslui"); break;
-         case  Zerind:    printf("Zerind"); break;
-    }  
+	int i = 0;
+	while (i < 9)
+	{
+		int j = 0;
+		while (j < 3)
+		{
+			printf("  %c", state->tower_matrix[i][j]);
+			j++;
+		}
+		printf("\n");
+		i++;
+	}
 }
 
 //______________________________________________________________________________
