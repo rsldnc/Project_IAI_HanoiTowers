@@ -21,19 +21,19 @@ State* Create_State()
 	Print_State(state);
 	printf("\n");
 	
-	int disk_num;
 	do
 	{ 
     		printf("Pick the num of disks(3, 5 or 7): ");
-        	scanf("%d", &disk_num);
-   	}while(disk_num != 3 && disk_num != 5 && disk_num != 7);
+        	scanf("%d", &state->disk_num);
+   	}while(state->disk_num != 3 && state->disk_num != 5 && state->disk_num != 7);
    	
 	int i = 7;
-	while (disk_num)
+	int cpy_disk_num = state->disk_num;
+	while (cpy_disk_num)
 	{
-		state->tower_matrix[i][0] = disk_num + 48;
+		state->tower_matrix[i][0] = cpy_disk_num + 48;
 		i--;
-		disk_num--;
+		cpy_disk_num--;
 	}
 	return state;
 }
