@@ -22,10 +22,11 @@ int main()
     printf("7 --> A* Search\n");
     printf("Select a method to solve the problem: ");
     scanf("%d", &method);
-    if(method==DepthLimitedSearch){
+    if(method==DepthLimitedSearch)
+    {
 	    printf("Enter maximum level for depth-limited search : ");                         
 	    scanf("%d", &Max_Level);                  
-	}     
+    }     
     
     // Creating the root node ... 
     root.parent    = NULL;
