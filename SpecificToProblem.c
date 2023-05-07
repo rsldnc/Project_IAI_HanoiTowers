@@ -151,3 +151,21 @@ float Compute_Heuristic_Function(const State *const state, const State *const go
 }
 
 // ==================== WRITE YOUR OPTIONAL FUNCTIONS ==========================
+
+int	ft_is_numeric(char c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	else
+		return (0);
+}
+
+char find_topoftower(const State *const parent_state, int col_num)
+{
+	int i = 0;
+	while (!ft_is_numeric(parent_state->tower_matrix[i][col_num]) && i < 8)
+	{
+		i++;
+	}
+	return parent_state->tower_matrix[i][col_num];
+}
