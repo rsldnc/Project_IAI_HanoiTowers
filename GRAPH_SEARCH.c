@@ -87,6 +87,14 @@ State* Create_Goal_State(int disk_num)
 	State *state = (State*)malloc(sizeof(State));
 	if(state==NULL)
     		Warning_Memory_Allocation(); 
+	for (i = 0; i < 8; i++)
+	{
+		for (j = 0; j < 3; j++)
+			state->tower_matrix[i][j] = '*';
+	}
+	state->tower_matrix[8][0] = 'A';
+	state->tower_matrix[8][1] = 'B';
+	state->tower_matrix[8][2] = 'C';
    	
 	int i = 7;
 	int cpy_disk_num = disk_num;
