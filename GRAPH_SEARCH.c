@@ -97,7 +97,7 @@ State* Create_Goal_State(int disk_num)
 	state->tower_matrix[8][1] = 'B';
 	state->tower_matrix[8][2] = 'C';
    	
-	int i = 7;
+	i = 7;
 	int cpy_disk_num = disk_num;
 	while (cpy_disk_num)
 	{
