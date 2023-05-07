@@ -69,41 +69,56 @@ void Print_Action(const enum ACTIONS action)
 }
 
 //______________________________________________________________________________
+int	ft_is_numeric(char c);
+char find_topoftower(const State *const parent_state, int col_num);
+
+//______________________________________________________________________________
 int Result(const State *const parent_state, const enum ACTIONS action, Transition_Model *const trans_model)
 {
     State new_state;
-	const int PATH_COSTS[CITY_NUMBER][ACTIONS_NUMBER] = 
-        {   {  0,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1, 140, 118,  -1,  -1,  75},  // Arad
-            { -1,   0,  -1,  -1,  -1, 211,  90,  -1,  -1,  -1,  -1,  -1,  -1, 101,  -1,  -1,  -1,  85,  -1,  -1},  // Bucharest
-			{ -1,  -1,   0, 120,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1, 138, 146,  -1,  -1,  -1,  -1,  -1},  // Craiova
-			{ -1,  -1, 120,   0,  -1,  -1,  -1,  -1,  -1,  -1,  75,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1},  // Drobeta
-			{ -1,  -1,  -1,  -1,   0,  -1,  -1,  86,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1},  // Eforie
-			{ -1, 211,  -1,  -1,  -1,   0,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  99,  -1,  -1,  -1,  -1},  // F 
-			{ -1,  90,  -1,  -1,  -1,  -1,   0,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1},  // G
-			{ -1,  -1,  -1,  -1,  86,  -1,  -1,   0,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  98,  -1,  -1},  // H
-			{ -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,   0,  -1,  -1,  87,  -1,  -1,  -1,  -1,  -1,  -1,  92,  -1},  // I
-			{ -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,   0,  70,  -1,  -1,  -1,  -1,  -1, 111,  -1,  -1,  -1},  // L 
-			{ -1,  -1,  -1,  75,  -1,  -1,  -1,  -1,  -1,  70,   0,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1},  // M
-			{ -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  87,  -1,  -1,   0,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1},  // N
-			{ -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,   0,  -1,  -1, 151,  -1,  -1,  -1,  71},  // O
-			{ -1, 101, 138,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,   0,  97,  -1,  -1,  -1,  -1,  -1},  // P
-			{ -1,  -1, 146,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  97,   0,  80,  -1,  -1,  -1,  -1},  // R
-			{140,  -1,  -1,  -1,  -1,  99,  -1,  -1,  -1,  -1,  -1,  -1, 151,  -1,  80,   0,  -1,  -1,  -1,  -1},  // S
-			{118,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1, 111,  -1,  -1,  -1,  -1,  -1,  -1,   0,  -1,  -1,  -1},  // T
-			{ -1,  85,  -1,  -1,  -1,  -1,  -1,  98,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,   0, 142,  -1},  // U
-			{ -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  92,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1, 142,   0,  -1},  // V
-			{ 75,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  -1,  71,  -1,  -1,  -1,  -1,  -1,  -1,   0}   // Z
-		};
-	     //    A    B    C    D    E    F    G    H    I    L    M    N    O    P    R    S    T    U    V    Z       
-	 
-         if(PATH_COSTS[parent_state->city][action]<=0) 
-              return FALSE;
-         else{
-              new_state.city = action;
-              trans_model->new_state = new_state;
-              trans_model->step_cost = PATH_COSTS[parent_state->city][action]; 
-         }     
-         return TRUE;                                               
+    int taken_from, put_into;
+    switch(action)
+    {
+    	case  TakeA_PutB:   
+			taken_from = 0; put_into = 1; break;
+    	case  TakeA_PutC:   
+			taken_from = 0; put_into = 2; break;
+    	case  TakeB_PutA:   
+			taken_from = 1; put_into = 0; break;
+    	case  TakeB_PutC:   
+			taken_from = 1; put_into = 2; break;
+    	case  TakeC_PutA:   
+			taken_from = 2; put_into = 0; break;
+        case  TakeC_PutB:   
+			taken_from = 2; put_into = 1; break;
+    }
+    
+    if (find_topoftower(taken_from) > find_topoftower(put_into)) 
+        return FALSE;
+    else
+    {
+        for (int k = 0; k < 9; k++)
+		{
+        	for (int l = 0; l < 3; l++)
+			{
+            	new_state->tower_matrix[k][l] = parent_state->tower_matrix[k][l];
+        	}
+    	}
+    	
+	int i = 0;
+        while (parent_state->tower_matrix[i][taken_from] != find_topoftower(taken_from))
+        	i++;
+        int j = 0;
+        while (parent_state->tower_matrix[j + 1][put_into] != find_topoftower(put_into))
+        	j++;
+        
+	char c = new_state->tower_matrix[i][taken_from];
+        new_state->tower_matrix[i][taken_from] = new_state->tower_matrix[j][put_into];
+        new_state->tower_matrix[j][put_into] = c;
+        trans_model->new_state = new_state;
+        trans_model->step_cost = 1; 
+    }     
+    return TRUE;                                               
 }
 
 float Compute_Heuristic_Function(const State *const state, const State *const goal)
