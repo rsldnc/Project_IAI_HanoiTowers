@@ -415,7 +415,30 @@ void Insert_Priority_Queue_GreedySearch(Node *const child, Queue **frontier)
 //______________________________________________________________________________
 void Insert_Priority_Queue_A_Star(Node *const child, Queue **frontier) 
 {  
-    // COMPLETE THIS PART
+    if (*frontier == NULL) 
+    { 
+        *frontier = (Queue*)malloc(sizeof(Queue)); 
+        (*frontier)->node = child; 
+        (*frontier)->next = NULL; 
+    } 
+    else if ((child->path_cost + child->state.h_n) <= ((*frontier)->node->path_cost + (*frontier)->node->state.h_n)) 
+    { 
+        Queue *new_node = (Queue*)malloc(sizeof(Queue)); 
+        new_node->node = child; 
+        new_node->next = *frontier; 
+        *frontier = new_node; 
+    } 
+    else 
+    { 
+        Queue *temp = *frontier; 
+        while (temp->next != NULL && (temp->next->node->path_cost + temp->next->node->state.h_n) < (child->path_cost + child->state.h_n)) 
+            temp = temp->next; 
+
+        Queue *new_node = (Queue*)malloc(sizeof(Queue)); 
+        new_node->node = child; 
+        new_node->next = temp->next; 
+        temp->next = new_node; 
+    } 
 }
 //______________________________________________________________________________
 void Print_Frontier(Queue *const frontier)
