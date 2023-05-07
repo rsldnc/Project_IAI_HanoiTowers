@@ -3,6 +3,7 @@
 #include "GRAPH_SEARCH.h"
 #include "data_types.h"
 
+State* Create_Goal_State(int disk_num);
 // THIS PROGRAM WORKS WHEN THE GOAL STATE CAN BE DEFINED BEFORE SEARCHING
 
 int main()
@@ -39,8 +40,10 @@ int main()
     
     if(PREDETERMINED_GOAL_STATE)  // User will determine the goal state if it is true
     {
-	    printf("======== SELECTION OF GOAL STATE =============== \n"); 
-	    goal_state = Create_State();
+	    printf("======== GOAL STATE =============== \n"); 
+	    goal_state = Create_Goal_State(root.state.disk_num);
+	    Print_State(goal_state);
+	    printf("\n");
     }
     
     if(method==GreedySearch || method==AStarSearch){
@@ -79,3 +82,19 @@ int main()
     return 0;
 }
 
+State* Create_Goal_State(int disk_num)
+{
+	State *state = (State*)malloc(sizeof(State));
+	if(state==NULL)
+    		Warning_Memory_Allocation(); 
+   	
+	int i = 7;
+	int cpy_disk_num = disk_num;
+	while (cpy_disk_num)
+	{
+		state->tower_matrix[i][2] = cpy_disk_num + 48;
+		i--;
+		cpy_disk_num--;
+	}
+	return state;
+}
