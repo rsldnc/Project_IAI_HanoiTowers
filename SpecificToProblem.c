@@ -93,7 +93,7 @@ int Result(const State *const parent_state, const enum ACTIONS action, Transitio
 			taken_from = 2; put_into = 1; break;
     }
     
-    if (find_topoftower(taken_from) > find_topoftower(put_into)) 
+    if (find_topoftower(parent_state, taken_from) > find_topoftower(parent_state, put_into)) 
         return FALSE;
     else
     {
@@ -106,10 +106,10 @@ int Result(const State *const parent_state, const enum ACTIONS action, Transitio
     	}
     	
 	int i = 0;
-        while (parent_state->tower_matrix[i][taken_from] != find_topoftower(taken_from))
+        while (parent_state->tower_matrix[i][taken_from] != find_topoftower(parent_state, taken_from))
         	i++;
         int j = 0;
-        while (parent_state->tower_matrix[j + 1][put_into] != find_topoftower(put_into))
+        while (parent_state->tower_matrix[j + 1][put_into] != find_topoftower(parent_state, put_into))
         	j++;
         
 	char c = new_state->tower_matrix[i][taken_from];
