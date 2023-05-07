@@ -23,7 +23,7 @@ enum ACTIONS // All possible actions
 
 typedef struct State  
 {
-    enum CITIES city;
+    char tower_matrix[9][3];
     float h_n;   // Heuristic function
       
 }State;
