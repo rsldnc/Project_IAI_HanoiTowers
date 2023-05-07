@@ -16,10 +16,9 @@ enum CITIES
 
 enum ACTIONS // All possible actions
 {
-	Go_Arad,    Go_Bucharest, Go_Craiova,  Go_Drobeta, Go_Eforie,
-	Go_Fagaras, Go_Giurgiu,   Go_Hirsova,  Go_Iasi,    Go_Lugoj,
-	Go_Mehadia, Go_Neamt,     Go_Oradea,   Go_Pitesti, Go_Rimnicu_Vilcea,
-	Go_Sibiu,   Go_Timisoara, Go_Urziceni, Go_Vaslui,  Go_Zerind
+	TakeA_PutB, TakeA_PutC,
+	TakeB_PutA, TakeB_PutC,
+	TakeC_PutA, TakeC_PutB
 };
 
 typedef struct State  
