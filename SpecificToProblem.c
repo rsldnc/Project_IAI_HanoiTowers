@@ -16,7 +16,8 @@ State* Create_State()
 {
 	State *state = (State*)malloc(sizeof(State));
 	if(state==NULL)
-    		Warning_Memory_Allocation(); 
+    		Warning_Memory_Allocation();
+	int i,j;
    	for (i = 0; i < 8; i++)
 	{
 		for (j = 0; j < 3; j++)
@@ -34,7 +35,7 @@ State* Create_State()
         	scanf("%d", &state->disk_num);
    	}while(state->disk_num != 3 && state->disk_num != 5 && state->disk_num != 7);
    	
-	int i = 7;
+	i = 7;
 	int cpy_disk_num = state->disk_num;
 	while (cpy_disk_num)
 	{
@@ -104,11 +105,12 @@ int Result(const State *const parent_state, const enum ACTIONS action, Transitio
         return FALSE;
     else
     {
-        for (int k = 0; k < 9; k++)
+	int k, l;
+        for (k = 0; k < 9; k++)
+	{
+        	for (l = 0; l < 3; l++)
 		{
-        	for (int l = 0; l < 3; l++)
-			{
-            	new_state->tower_matrix[k][l] = parent_state->tower_matrix[k][l];
+            		new_state.tower_matrix[k][l] = parent_state->tower_matrix[k][l];
         	}
     	}
     	
@@ -119,9 +121,9 @@ int Result(const State *const parent_state, const enum ACTIONS action, Transitio
         while (parent_state->tower_matrix[j + 1][put_into] != find_topoftower(parent_state, put_into))
         	j++;
         
-	char c = new_state->tower_matrix[i][taken_from];
-        new_state->tower_matrix[i][taken_from] = new_state->tower_matrix[j][put_into];
-        new_state->tower_matrix[j][put_into] = c;
+	char c = new_state.tower_matrix[i][taken_from];
+        new_state.tower_matrix[i][taken_from] = new_state.tower_matrix[j][put_into];
+        new_state.tower_matrix[j][put_into] = c;
         trans_model->new_state = new_state;
         trans_model->step_cost = 1; 
     }     
