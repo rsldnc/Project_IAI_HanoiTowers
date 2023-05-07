@@ -34,6 +34,7 @@ typedef struct State
         {'*', '*', '*'},
         {'A', 'B', 'C'}
     };
+    int disk_num;
     float h_n;   // Heuristic function
       
 }State;
