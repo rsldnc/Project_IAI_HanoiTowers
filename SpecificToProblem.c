@@ -63,26 +63,12 @@ void Print_State(const State *const state)
 void Print_Action(const enum ACTIONS action)
 {
    switch(action){
-         case  Go_Arad:      printf("Go_Arad"); break;
-         case  Go_Bucharest: printf("Go_Bucharest"); break;
-         case  Go_Craiova:   printf("Go_Craiova"); break;
-         case  Go_Drobeta:   printf("Go_Drobeta"); break;
-         case  Go_Eforie:    printf("Go_Eforie"); break;
-         case  Go_Fagaras:   printf("Go_Fagaras"); break;
-         case  Go_Giurgiu:   printf("Go_Giurgiu"); break;
-         case  Go_Hirsova:   printf("Go_Hirsova"); break;
-         case  Go_Iasi:      printf("Go_Iasi"); break;
-         case  Go_Lugoj:     printf("Go_Lugoj"); break;
-         case  Go_Mehadia:   printf("Go_Mehadia"); break;
-         case  Go_Neamt:     printf("Go_Neamt"); break;
-         case  Go_Oradea:    printf("Go_Oradea"); break;
-         case  Go_Pitesti:   printf("Go_Pitesti"); break;
-         case  Go_Rimnicu_Vilcea: printf("Go_Rimnicu_Vilcea"); break;
-         case  Go_Sibiu:     printf("Go_Sibiu"); break;
-         case  Go_Timisoara: printf("Go_Timisoara"); break;
-         case  Go_Urziceni:  printf("Go_Urziceni"); break;
-         case  Go_Vaslui:    printf("Go_Vaslui"); break;
-         case  Go_Zerind:    printf("Go_Zerind"); break;
+         case  TakeA_PutB:   printf("TakeA_PutB"); break;
+         case  TakeA_PutC:   printf("TakeA_PutC"); break;
+         case  TakeB_PutA:   printf("TakeB_PutA"); break;
+         case  TakeB_PutC:   printf("TakeB_PutC"); break;
+         case  TakeC_PutA:   printf("TakeC_PutA"); break;
+         case  TakeC_PutB:   printf("TakeC_PutB"); break;
     }        
 }
 
