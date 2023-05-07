@@ -87,6 +87,7 @@ State* Create_Goal_State(int disk_num)
 	State *state = (State*)malloc(sizeof(State));
 	if(state==NULL)
     		Warning_Memory_Allocation(); 
+	int i, j;
 	for (i = 0; i < 8; i++)
 	{
 		for (j = 0; j < 3; j++)
