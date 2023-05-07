@@ -23,7 +23,17 @@ enum ACTIONS // All possible actions
 
 typedef struct State  
 {
-    char tower_matrix[9][3];
+    char tower_matrix[9][3] = {
+        {'*', '*', '*'},
+        {'*', '*', '*'},
+        {'*', '*', '*'},
+        {'*', '*', '*'},
+        {'*', '*', '*'},
+        {'*', '*', '*'},
+        {'*', '*', '*'},
+        {'*', '*', '*'},
+        {'A', 'B', 'C'}
+    };
     float h_n;   // Heuristic function
       
 }State;
