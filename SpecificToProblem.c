@@ -15,21 +15,27 @@
 State* Create_State()
 {
 	State *state = (State*)malloc(sizeof(State));
-    if(state==NULL)
-    	Warning_Memory_Allocation(); 
+	if(state==NULL)
+    		Warning_Memory_Allocation(); 
    
-   	for(state->city=Arad; state->city<=Zerind; state->city++){        
-    	printf("%d --> ", state->city);
-        Print_State(state);
-        printf("\n");
-   	}        
-   
-   	do{ 
-    	printf("Enter the code of the state: ");
-        scanf("%d", &state->city);
-   	}while(state->city<0 && state->city>=CITY_NUMBER);
-	       
-    return state;    
+	Print_State(state);
+	printf("\n");
+	
+	int disk_num;
+	do
+	{ 
+    		printf("Pick the num of disks(3, 5 or 7): ");
+        	scanf("%d", &disk_num);
+   	}while(disk_num != 3 && disk_num != 5 && disk_num != 7);
+   	
+	int i = 7;
+	while (disk_num)
+	{
+		state->tower_matrix[i][0] = disk_num + 48;
+		i--;
+		disk_num--;
+	}
+	return state;
 }
 
 //______________________________________________________________________________
