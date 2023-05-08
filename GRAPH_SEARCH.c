@@ -3,7 +3,6 @@
 #include "GRAPH_SEARCH.h"
 #include "data_types.h"
 
-State* Create_Goal_State(int disk_num);
 // THIS PROGRAM WORKS WHEN THE GOAL STATE CAN BE DEFINED BEFORE SEARCHING
 
 int main()
