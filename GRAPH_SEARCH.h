@@ -4,11 +4,11 @@
 #include "data_types.h"
 
 // ==================== WRITE YOUR OPTIONAL COMMANDS (IF YOU NEED) ===========================
-#define CITY_NUMBER  20
+#define CITY_NUMBER  6
 
 // ========  YOUR COMPULSORY (BUT SPECIFIC TO THE PROBLEM) COMMANDS ============ 
 #define PREDETERMINED_GOAL_STATE  1 // If the goal state is known, its value should be 1
-#define ACTIONS_NUMBER  20
+#define ACTIONS_NUMBER  6
 #define MAX_SEARCHED_NODE 100000000 // Stopping criteria
 
 // ================== YOU DO NOT NEED TO CHANGE THIS PART ======================
