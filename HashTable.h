@@ -4,7 +4,7 @@
 #include "data_types.h"
 
 // ========  YOUR COMPULSORY (BUT SPECIFIC TO THE PROBLEM) COMMANDS ============
-#define HASH_TABLE_BASED_SIZE 25
+#define HASH_TABLE_BASED_SIZE 300
 #define HASH_TABLE_INCREASING_RATE 70
 #define MAX_KEY_SIZE 10
 
