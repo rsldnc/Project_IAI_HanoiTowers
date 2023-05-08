@@ -54,15 +54,16 @@ void Print_State(const State *const state)
 	int i = 0;
 	while (i < 9)
 	{
+		printf("\n");
 		int j = 0;
 		while (j < 3)
 		{
 			printf("  %c", state->tower_matrix[i][j]);
 			j++;
 		}
-		printf("\n");
 		i++;
 	}
+	printf("\n");
 }
 
 //______________________________________________________________________________
