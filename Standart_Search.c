@@ -48,7 +48,7 @@ Node* First_InsertFrontier_Search_TREE(const enum METHODS method, Node *const ro
 		ht_insert(explorer_set, &(node->state));       
 		Show_Hash_Table(explorer_set);
 				                                
-        for(action=0; action<ACTIONS_NUMBER; action++)
+        for(action=0; action<6; action++)
 		{
 			child = Child_Node(node, action);
 		    
@@ -130,7 +130,7 @@ Node* First_GoalTest_Search_TREE(const enum METHODS method, Node *const root, St
 		ht_insert(explorer_set, &(node->state));       
 		Show_Hash_Table(explorer_set);
                                         
-        for(action=0; action<ACTIONS_NUMBER; action++)
+        for(action=0; action<6; action++)
 		{
 			child = Child_Node(node, action);
 			
@@ -215,7 +215,7 @@ Node* DepthType_Search_TREE(const enum METHODS method, Node *const root, State *
 			} 
                 
                                         
-        for(action=0; action<ACTIONS_NUMBER; action++)
+        for(action=0; action<6; action++)
 		{
 			child = Child_Node(node, action);
 		    
@@ -242,7 +242,7 @@ Node* DepthType_Search_TREE(const enum METHODS method, Node *const root, State *
 				}										   
             }
 			
-			if(action==ACTIONS_NUMBER-1 && node->Number_of_Child==0) // If node has not child, clear it
+			if(action==5 && node->Number_of_Child==0) // If node has not child, clear it
 				Clear_All_Branch(node, &Number_Allocated_Nodes);	            
 		}
 		    
