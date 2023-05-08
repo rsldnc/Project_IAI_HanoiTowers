@@ -101,7 +101,7 @@ int Result(const State *const parent_state, const enum ACTIONS action, Transitio
 			taken_from = 2; put_into = 1; break;
     }
     
-    if (find_topoftower(parent_state, taken_from) > find_topoftower(parent_state, put_into)) 
+    if ((find_topoftower(parent_state, taken_from) > find_topoftower(parent_state, put_into)) || (!ft_is_numeric(find_topoftower(parent_state, taken_from)) && !ft_is_numeric(find_topoftower(parent_state, put_into)))) 
         return FALSE;
     else
     {
