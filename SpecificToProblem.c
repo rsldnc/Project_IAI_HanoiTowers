@@ -26,8 +26,6 @@ State* Create_State()
 	state->tower_matrix[8][0] = 'A';
 	state->tower_matrix[8][1] = 'B';
 	state->tower_matrix[8][2] = 'C';
-	Print_State(state);
-	printf("\n");
 	
 	do
 	{ 
@@ -43,6 +41,10 @@ State* Create_State()
 		i--;
 		cpy_disk_num--;
 	}
+
+	Print_State(state);
+	printf("\n");
+
 	return state;
 }
 
