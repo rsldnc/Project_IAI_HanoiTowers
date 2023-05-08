@@ -43,6 +43,7 @@ int main()
 	    goal_state = Create_Goal_State(root.state.disk_num);
 	    Print_State(goal_state);
 	    printf("\n");
+	    printf("=================================== \n");
     }
     
     if(method==GreedySearch || method==AStarSearch){
