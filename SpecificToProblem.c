@@ -41,7 +41,7 @@ State* Create_State()
 		i--;
 		cpy_disk_num--;
 	}
-
+	printf("======== INITIAL STATE =============== \n");
 	Print_State(state);
 	printf("\n");
 
