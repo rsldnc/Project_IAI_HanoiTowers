@@ -68,19 +68,22 @@ void Print_State(const State *const state)
 //______________________________________________________________________________
 void Print_Action(const enum ACTIONS action)
 {
-   switch(action){
-         case  TakeA_PutB:   printf("TakeA_PutB"); break;
-         case  TakeA_PutC:   printf("TakeA_PutC"); break;
-         case  TakeB_PutA:   printf("TakeB_PutA"); break;
-         case  TakeB_PutC:   printf("TakeB_PutC"); break;
-         case  TakeC_PutA:   printf("TakeC_PutA"); break;
-         case  TakeC_PutB:   printf("TakeC_PutB"); break;
-    }        
+	switch(action)
+	{
+		case  TakeA_PutB:   
+			printf("TakeA_PutB"); break;
+		case  TakeA_PutC:   
+			printf("TakeA_PutC"); break;
+		case  TakeB_PutA:   
+			printf("TakeB_PutA"); break;
+		case  TakeB_PutC:   
+			printf("TakeB_PutC"); break;
+		case  TakeC_PutA:   
+			printf("TakeC_PutA"); break;
+		case  TakeC_PutB:   
+			printf("TakeC_PutB"); break;
+	}
 }
-
-//______________________________________________________________________________
-int	ft_is_numeric(char c);
-char find_topoftower(const State *const parent_state, int col_num);
 
 //______________________________________________________________________________
 int Result(const State *const parent_state, const enum ACTIONS action, Transition_Model *const trans_model)
