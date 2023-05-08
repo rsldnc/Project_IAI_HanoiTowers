@@ -55,17 +55,19 @@ int main()
         case BreastFirstSearch: 
         case GreedySearch:               
             goal = First_GoalTest_Search_TREE(method, &root, goal_state);  break; 
-		case DepthFirstSearch: 	
-		case DepthLimitedSearch: 
+	case DepthFirstSearch: 	
+	case DepthLimitedSearch: 
 			goal = DepthType_Search_TREE(method, &root, goal_state, Max_Level);  break;  
         case IterativeDeepeningSearch:
-            for(level=0; TRUE ;level++){
+            for(level=0; TRUE ;level++)
+	    {
             	goal = DepthType_Search_TREE(method, &root, goal_state, level);
-            	if(goal!=FAILURE){
+            	if(goal!=FAILURE)
+		{
             		printf("The goal is found in level %d.\n", level); 
             		break;
-				}		
-			}
+		}		
+	    }
             break;     
         case UniformCostSearch: 
         case AStarSearch:     
