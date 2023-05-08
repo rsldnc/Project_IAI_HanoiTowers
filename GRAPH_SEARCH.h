@@ -52,6 +52,7 @@ Node* Frontier_search(Queue *const frontier, const State *const state);
 void Remove_Node_From_Frontier(Node *const old_child, Queue **const frontier) ; 
 
 // ==================== WRITE YOUR OPTIONAL DECLARATIONS (IF YOU NEED) =======================
+State* Create_Goal_State(int disk_num);
 int ft_is_numeric(char c);
 char find_topoftower(const State *const parent_state, int col_num);
 
