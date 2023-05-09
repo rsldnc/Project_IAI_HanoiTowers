@@ -31,7 +31,8 @@ Node* First_InsertFrontier_Search_TREE(const enum METHODS method, Node *const ro
 		node = Pop(&frontier);         
 		// GOAL-TEST
 		Number_Searched_Nodes++;
-		if(Goal_Test(&(node->state), goal_state) ){
+		if(Goal_Test(&(node->state), goal_state) )
+		{
 			printf("\nThe number of searched nodes is : %d\n", Number_Searched_Nodes);
 			printf("\nThe number of generated nodes is : %d\n", Number_Generated_Nodes);
 			printf("\nThe number of generated nodes in memory is : %d\n", Number_Allocated_Nodes);
@@ -119,7 +120,8 @@ Node* First_GoalTest_Search_TREE(const enum METHODS method, Node *const root, St
 		for(action=0; action<6; action++)
 		{
 			child = Child_Node(node, action);			
-			if(child!=NULL){
+			if(child!=NULL)
+			{
 				Number_Generated_Nodes++;
 				Number_Allocated_Nodes++;
 				if(ht_search(explorer_set, &(child->state)) || Frontier_search(frontier, &(child->state))!=NULL)
@@ -205,7 +207,7 @@ Node* DepthType_Search_TREE(const enum METHODS method, Node *const root, State *
 					// GOAL-TEST
 					Number_Searched_Nodes++;
 					if(Goal_Test(&(child->state), goal_state) )
-				    {
+					{
 						printf("\nThe number of searched nodes is : %d\n", Number_Searched_Nodes);
 				        	printf("\nThe number of generated nodes is : %d\n", Number_Generated_Nodes);
 				        	printf("\nThe number of generated nodes in memory is : %d\n", Number_Allocated_Nodes);
@@ -299,9 +301,9 @@ void Insert_LIFO(Node *const child, Queue **frontier)
 	Queue *new_queue = (Queue*)malloc(sizeof(Queue));
 	if(new_queue==NULL)
 		Warning_Memory_Allocation(); 
-		new_queue->node = child;
-		new_queue->next = *frontier;
-		*frontier = new_queue;   
+	new_queue->node = child;
+	new_queue->next = *frontier;
+	*frontier = new_queue;   
 }
 //______________________________________________________________________________
 void Insert_Priority_Queue_UniformSearch(Node *const child, Queue **frontier) 
@@ -328,7 +330,8 @@ void Insert_Priority_Queue_UniformSearch(Node *const child, Queue **frontier)
 		{
 			for(temp_queue = *frontier; temp_queue->next != NULL; temp_queue = temp_queue->next)
 			{
-				if(child->path_cost<temp_queue->next->node->path_cost){ 
+				if(child->path_cost<temp_queue->next->node->path_cost)
+				{ 
 					new_queue->next = temp_queue->next;   
                     			temp_queue->next = new_queue;
 					return;
@@ -347,21 +350,22 @@ void Insert_Priority_Queue_GreedySearch(Node *const child, Queue **frontier)
     	Queue *new_queue = (Queue*)malloc(sizeof(Queue));
 	if(new_queue==NULL)
 		Warning_Memory_Allocation();         
-		new_queue->node = child;	 
+	new_queue->node = child;	 
 	if(Empty(*frontier))
-    {
+	{
 		new_queue->next = NULL;                 
 	 	*frontier = new_queue; 
-    }
+    	}
 	else
 	{ 
 		// If frontier is not empty, find appropriate element according to ordered cost. 
-		if(child->state.h_n < (*frontier)->node->state.h_n){ // Child has lowest cost
+		if(child->state.h_n < (*frontier)->node->state.h_n)
+		{ // Child has lowest cost
 			new_queue->next = *frontier;
             		*frontier = new_queue; 
 		}
 		else
-	{
+		{
 			for(temp_queue = *frontier; temp_queue->next != NULL; temp_queue = temp_queue->next)
 			{
 				if(child->state.h_n < temp_queue->next->node->state.h_n)
@@ -414,7 +418,7 @@ void Print_Frontier(Queue *const frontier)
 	{
 		Print_Node(temp_queue->node);
 		if(temp_queue->next!= NULL)
-		printf(" ,");
+			printf(" ,");
 	}
 	printf(" ]\n");   			
 }
@@ -424,7 +428,8 @@ void Remove_Node_From_Frontier(Node *const old_child, Queue **const frontier)
     Queue *curr_queue, *prev_queue;   
 	for(curr_queue = *frontier; curr_queue!= NULL; curr_queue = curr_queue->next)
 	{
-		if(curr_queue->node == old_child){
+		if(curr_queue->node == old_child)
+		{
 			//Remove the old child
 	    		if(curr_queue==*frontier)  // for the first node
 				*frontier = curr_queue->next;
@@ -459,7 +464,8 @@ int Frontier_update(Queue *const frontier, const State *const state)
 //______________________________________________________________________________
 void Print_Node(const Node *const node)
 {
-	if(node!=NULL){
+	if(node!=NULL)
+	{
 		printf("NODE(");
 		Print_State(&(node->state));
 		if(node->parent)
