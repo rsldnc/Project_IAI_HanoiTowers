@@ -89,51 +89,51 @@ void Print_Action(const enum ACTIONS action)
 //______________________________________________________________________________
 int Result(const State *const parent_state, const enum ACTIONS action, Transition_Model *const trans_model)
 {
-    State new_state;
-    int taken_from, put_into;
-    switch(action)
-    {
-    	case  TakeA_PutB:   
-			taken_from = 0; put_into = 1; break;
-    	case  TakeA_PutC:   
-			taken_from = 0; put_into = 2; break;
-    	case  TakeB_PutA:   
-			taken_from = 1; put_into = 0; break;
-    	case  TakeB_PutC:   
-			taken_from = 1; put_into = 2; break;
-    	case  TakeC_PutA:   
-			taken_from = 2; put_into = 0; break;
-        case  TakeC_PutB:   
-			taken_from = 2; put_into = 1; break;
-    }
-    
-    if ((find_topoftower(parent_state, taken_from) > find_topoftower(parent_state, put_into)) || (!ft_is_numeric(find_topoftower(parent_state, taken_from)) && !ft_is_numeric(find_topoftower(parent_state, put_into)))) 
-        return FALSE;
-    else
-    {
-	int k, l;
-        for (k = 0; k < 9; k++)
+   	State new_state;
+	int taken_from, put_into;
+	switch(action)
 	{
-        	for (l = 0; l < 3; l++)
+		case  TakeA_PutB:   
+			taken_from = 0; put_into = 1; break;
+		case  TakeA_PutC:   
+			taken_from = 0; put_into = 2; break;
+		case  TakeB_PutA:   
+			taken_from = 1; put_into = 0; break;
+		case  TakeB_PutC:   
+			taken_from = 1; put_into = 2; break;
+		case  TakeC_PutA:   
+			taken_from = 2; put_into = 0; break;
+		case  TakeC_PutB:   
+			taken_from = 2; put_into = 1; break;
+	}
+
+	if ((find_topoftower(parent_state, taken_from) > find_topoftower(parent_state, put_into)) || (!ft_is_numeric(find_topoftower(parent_state, taken_from)) && !ft_is_numeric(find_topoftower(parent_state, put_into)))) 
+		return FALSE;
+	else
+	{
+		int k, l;
+		for (k = 0; k < 9; k++)
 		{
-            		new_state.tower_matrix[k][l] = parent_state->tower_matrix[k][l];
-        	}
-    	}
+        		for (l = 0; l < 3; l++)
+			{
+            			new_state.tower_matrix[k][l] = parent_state->tower_matrix[k][l];
+        		}
+    		}
     	
-	int i = 0;
-        while (parent_state->tower_matrix[i][taken_from] != find_topoftower(parent_state, taken_from))
-        	i++;
-        int j = 0;
-        while (parent_state->tower_matrix[j + 1][put_into] != find_topoftower(parent_state, put_into))
-        	j++;
+		int i = 0;
+        	while (parent_state->tower_matrix[i][taken_from] != find_topoftower(parent_state, taken_from))
+        		i++;
+        	int j = 0;
+        	while (parent_state->tower_matrix[j + 1][put_into] != find_topoftower(parent_state, put_into))
+        		j++;
         
-	char c = new_state.tower_matrix[i][taken_from];
-        new_state.tower_matrix[i][taken_from] = new_state.tower_matrix[j][put_into];
-        new_state.tower_matrix[j][put_into] = c;
-        trans_model->new_state = new_state;
-        trans_model->step_cost = 1; 
-    }     
-    return TRUE;                                               
+		char c = new_state.tower_matrix[i][taken_from];
+        	new_state.tower_matrix[i][taken_from] = new_state.tower_matrix[j][put_into];
+        	new_state.tower_matrix[j][put_into] = c;
+        	trans_model->new_state = new_state;
+        	trans_model->step_cost = 1; 
+	}     
+	return TRUE;                                               
 }
 
 float Compute_Heuristic_Function(const State *const state, const State *const goal)
