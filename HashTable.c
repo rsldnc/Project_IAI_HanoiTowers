@@ -66,47 +66,47 @@ static int is_prime(const unsigned int x)
  //________ Return the next prime after x, or x if x is prime_________________
 static unsigned next_prime(unsigned int x) 
 {
-    while (is_prime(x) == FALSE) 
-    {
-        x++;
-    }
-    return x;
+	while (is_prime(x) == FALSE) 
+	{
+		x++;
+	}
+	return x;
 }
 
 //___________________ Hash Function __________________________________
 static unsigned int hash_func(const char* key, const int size) 
 {
-    unsigned int hash = 0, i;
-    // a should be a prime number larger than the size of the alphabet
-    const int a = 151; 
-    const int length_key = strlen(key);
+	unsigned int hash = 0, i;
+	// a should be a prime number larger than the size of the alphabet
+	const int a = 151; 
+	const int length_key = strlen(key);
         for (i = 0; i < length_key; i++)
     	{
-    	hash += (unsigned int)pow(a, length_key - (i+1)) * key[i];
-    	hash = hash % size;
+    		hash += (unsigned int)pow(a, length_key - (i+1)) * key[i];
+    		hash = hash % size;
 	} 
 	  
-    return hash;
+	return hash;
 }
 
 //___________________ Create new Hash Table______________________
 Hash_Table* New_Hash_Table(const int size) 
 {      
-    Hash_Table* ht = (Hash_Table*)malloc(sizeof(Hash_Table));
-    if(ht==NULL)
-        Warning_Memory_Allocation(); 
-    ht->size = next_prime(size);
-    ht->count = 0;
+	Hash_Table* ht = (Hash_Table*)malloc(sizeof(Hash_Table));
+	if(ht==NULL)
+		Warning_Memory_Allocation(); 
+	ht->size = next_prime(size);
+	ht->count = 0;
         ht->State_Key = (unsigned char**)calloc(ht->size, sizeof(unsigned char*));
-    if(ht->State_Key==NULL)
-        Warning_Memory_Allocation(); 
-            return ht;
+	if(ht->State_Key==NULL)
+		Warning_Memory_Allocation(); 
+	return ht;
 }
 
 //___________________ Insert __________________________________
 void ht_insert(Hash_Table *ht, const State *const state) 
 {
-    char key[MAX_KEY_SIZE];        	
+	char key[MAX_KEY_SIZE];        	
 	Generate_HashTable_Key(state, key);
 	ht_insert_key(ht, key);
 }
@@ -121,15 +121,15 @@ void ht_insert_key(Hash_Table *ht, const char *key)
         	Resize_Hash_Table(ht, new_size);
     	}
 	if(ht->size==ht->count)
-    		{
+    	{
     		printf("ERROR: Hash table is full.\n");
 		exit(-1);	
-		}
+	}
 	index = hash_func(key, ht->size);
     	while (ht->State_Key[index] != NULL) 
 	{
 		if(index==ht->size-1)
-    		index = 0; 
+			index = 0; 
 		else
 			index++;
 	}
@@ -152,7 +152,7 @@ int ht_search(Hash_Table *ht, const State *const state)
 	while (ht->State_Key[index] != NULL)
 	{
 		if (strcmp(ht->State_Key[index], key) == 0)
-    		return TRUE;
+			return TRUE;
 		if(index==ht->size-1)
 			index = 0; 
 		else
@@ -170,7 +170,7 @@ void Resize_Hash_Table(Hash_Table* ht, const int size)
 	unsigned int temp_size, temp_count;
 	unsigned char** temp_key;
 	Hash_Table *new_ht = New_Hash_Table(size);
-    // create new larger hash table
+	// create new larger hash table
 	for (i = 0; i < ht->size; i++)
 	{
 		if (ht->State_Key[i] != NULL)
@@ -178,15 +178,15 @@ void Resize_Hash_Table(Hash_Table* ht, const int size)
 			ht_insert_key(new_ht, ht->State_Key[i]);
 		}
 	}
-    // swap size
+	// swap size
 	temp_size = ht->size;
 	ht->size = new_ht->size;
 	new_ht->size = temp_size;
-    // swap count
+	// swap count
 	temp_count = ht->count;
 	ht->count  = new_ht->count;
 	new_ht->count = temp_count;
-    // swap keys
+	// swap keys
 	temp_key = ht->State_Key;
 	ht->State_Key = new_ht->State_Key;
  	new_ht->State_Key = temp_key;
@@ -213,8 +213,5 @@ void Show_Hash_Table(Hash_Table *ht)
 	printf("\nHASH TABLE IS (Size = %u, Count = %u ): \n", ht->size, ht->count);
 	for (i=0; i<ht->size; i++) 
 		if (ht->State_Key[i] != NULL)
-    		printf("[%u] --> %s\n", i, ht->State_Key[i]);
+			printf("[%u] --> %s\n", i, ht->State_Key[i]);
 }
-
-
-
