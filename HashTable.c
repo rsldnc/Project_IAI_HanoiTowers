@@ -49,13 +49,13 @@ void Generate_HashTable_Key(const State *const state, unsigned char* key)
 // ======= YOU DO NOT NEED TO CHANGE THIS COMPULSORY DECLARATIONS ==============
 
 //___________________ Determine whether x is prime or not______________________
-static int is_prime(const unsigned int x) {
+static int is_prime(const unsigned int x) 
+{
 	int i;
-	
-    if(x<2) 
+	if(x<2) 
 		return FALSE; 
-		
-	for(i=2; i<=x/2; i++){
+	for(i=2; i<=x/2; i++)
+	{
 		if(x%i==0)
 			return FALSE;
 	}	
