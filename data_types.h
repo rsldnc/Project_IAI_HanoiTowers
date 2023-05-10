@@ -1,17 +1,6 @@
 #ifndef DATA_TYPES_H
 #define DATA_TYPES_H
 
-// ==================== WRITE YOUR OPTIONAL DATA TYPES IF YOU NEED =============
-
-enum CITIES 
-{
-	Arad,    Bucharest, Craiova,  Drobeta, Eforie,
-	Fagaras, Giurgiu,   Hirsova,  Iasi,    Lugoj,
-	Mehadia, Neamt,     Oradea,   Pitesti, Rimnicu_Vilcea,
-	Sibiu,   Timisoara, Urziceni, Vaslui,  Zerind
-};
-
-
 // ====== WRITE YOUR COMPULSORY (BUT SPECIFIC TO THE PROBLEM) DATA TYPES =======
 
 enum ACTIONS // All possible actions
